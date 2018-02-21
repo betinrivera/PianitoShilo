@@ -1,0 +1,156 @@
+﻿<Window x:Class="Playback.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Playback"
+        mc:Ignorable="d"
+        Title="Playback" Height="350" Width="934">
+    <Grid Margin="0,0,-8,-3">
+        <TextBox x:Name="txtRuta" HorizontalAlignment="Left" Height="23" Margin="57,27,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="319" IsEnabled="False"/>
+        <Button x:Name="btnBuscar" Content="Examinar" HorizontalAlignment="Left" Margin="411,27,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="btnBuscar_Click"/>
+        <Button x:Name="btnStop" Content="Stop" HorizontalAlignment="Left" Margin="211,136,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="btnStop_Click" IsEnabled="False"/>
+        <Button x:Name="btnPlay" Content="Play" HorizontalAlignment="Left" Margin="51,136,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="btnPlay_Click"/>
+        <Slider x:Name="sldPosition" HorizontalAlignment="Left" Margin="57,65,0,0" VerticalAlignment="Top" Width="319" 
+                Thumb.DragCompleted="sldPosition_dragCompleted" 
+                Thumb.DragStarted="sldPostion_dragStarted"/>
+        <TextBlock x:Name="lblPosition" HorizontalAlignment="Left" Margin="57,88,0,0" TextWrapping="Wrap" Text="0:00" VerticalAlignment="Top"/>
+        <TextBlock x:Name="lblDuration" HorizontalAlignment="Left" Margin="326,91,0,0" TextWrapping="Wrap" Text="0:00" VerticalAlignment="Top"/>
+        <Button x:Name="btnPause" Content="Pause" HorizontalAlignment="Left" Margin="131,136,0,0" VerticalAlignment="Top" Width="75" Height="23" IsEnabled="False" Click="btnPause_Click"/>
+        <ComboBox x:Name="cbDispositivos" HorizontalAlignment="Left" Margin="51,109,0,0" VerticalAlignment="Top" Width="325"/>
+        <Slider x:Name="sldVolumen" HorizontalAlignment="Left" Margin="411,55,0,0" VerticalAlignment="Top" Width="21" Orientation="Vertical" Height="114" Maximum="1.5" Value="1" 
+                Thumb.DragCompleted="sldVolumen_DragCompleted" ValueChanged="sldVolumen_ValueChanged"/>
+        <Button x:Name="btnCortar" Content="Cortar" HorizontalAlignment="Left" Margin="51,164,0,0" VerticalAlignment="Top" Width="75" Click="btnCortar_Click"/>
+        <Button x:Name="btnCrearFrecuencia" Content="Frecuencia" HorizontalAlignment="Left" Margin="51,246,0,0" VerticalAlignment="Top" Width="75" Click="btnCrearFrecuencia_Click"/>
+        <TextBox x:Name="txtFrecuencia" HorizontalAlignment="Left" Height="23" Margin="51,197,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" />
+        <TextBox x:Name="txtSegundos" HorizontalAlignment="Left" Height="23" Margin="149,197,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" />
+        <TextBox x:Name="txtNombreArchivo" HorizontalAlignment="Left" Height="23" Margin="287,197,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" />
+        <TextBlock x:Name="textBlockFrecuencia" HorizontalAlignment="Left" Margin="57,225,0,0" TextWrapping="Wrap" Text="Frecuencia" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlockSegundos" HorizontalAlignment="Left" Margin="176,225,0,0" TextWrapping="Wrap" Text="Tiempo" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlockNombreArchivo" HorizontalAlignment="Left" Margin="305,225,0,0" TextWrapping="Wrap" Text="Nombre de archivo" VerticalAlignment="Top"/>
+        <Button x:Name="btnOffset" Content="Genera archivo von OffsetProvider" HorizontalAlignment="Left" Margin="131,164,0,0" VerticalAlignment="Top" Width="245" Click="btnOffset_Click"/>
+        <Button x:Name="btnReproducirSeñal" Content="Reproducir Señal" HorizontalAlignment="Left" Margin="51,276,0,0" VerticalAlignment="Top" Width="104" Click="btnReproducirSeñal_Click"/>
+        <Slider x:Name="sldFrecuencia" HorizontalAlignment="Left" Margin="255,266,0,0" VerticalAlignment="Top" Width="167" Minimum="20" Maximum="19994" Value="5014" ValueChanged="sldFrecuencia_ValueChanged"/>
+        <Button x:Name="btn_do" Content="DO" HorizontalAlignment="Left" Margin="585,160,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.5,0.5" Click="button_Click">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="90.122"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Button x:Name="btn_re" Content="RE" HorizontalAlignment="Left" Margin="605,160,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.5,0.5" Click="btn_re_Click">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="89.173"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Button x:Name="btn_mi" Content="MI" HorizontalAlignment="Left" Margin="625,160,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.5,0.5" Click="btn_mi_Click">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="89.123"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Button x:Name="btn_fa" Content="FA" HorizontalAlignment="Left" Margin="645,160,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.5,0.5" Click="btn_fa_Click">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="89.096"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Button x:Name="btn_sol" Content="SOL" HorizontalAlignment="Left" Margin="665,160,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.5,0.5" Click="btn_sol_Click">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="88.772"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Button x:Name="btn_la" Content="LA" HorizontalAlignment="Left" Margin="685,160,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.5,0.5" Click="btn_la_Click">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="89.816"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Button x:Name="btn_si" Content="SI" HorizontalAlignment="Left" Margin="705,160,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.5,0.5" Click="btn_si_Click">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="89.573"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Button x:Name="btn_csos" Content="DO#" HorizontalAlignment="Left" Margin="620,136,0,0" VerticalAlignment="Top" Width="26" RenderTransformOrigin="0.5,0.5" Height="19" Click="btn_csos_Click">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="89.558"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Button x:Name="btn_resos" Content="RE#" HorizontalAlignment="Left" Margin="639,138,0,0" VerticalAlignment="Top" Width="27" Height="17" RenderTransformOrigin="0.827,0.296" Click="btn_resos_Click">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="89.743"/>
+                    <TranslateTransform X="-4.02" Y="10.974"/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Button x:Name="btn_fasos1" Content="FA#" HorizontalAlignment="Left" Margin="678,135,0,0" VerticalAlignment="Top" Width="27" RenderTransformOrigin="0.5,0.5" Click="btn_fasos1_Click">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="88.763"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Button x:Name="btn_solsos" Content="SOL#" HorizontalAlignment="Left" Margin="696,136,0,0" VerticalAlignment="Top" Width="28" RenderTransformOrigin="0.5,0.5" Height="18">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="90.569"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Button x:Name="btn_lasos" Content="LA#" HorizontalAlignment="Left" Margin="720,136,0,0" VerticalAlignment="Top" Width="24" RenderTransformOrigin="0.5,0.5" Height="19" Click="btn_lasos_Click">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="90.765"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+
+    </Grid>
+</Window>
